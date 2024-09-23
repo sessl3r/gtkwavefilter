@@ -1,0 +1,25 @@
+[*]
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Mon Sep 23 07:06:23 2024
+[*]
+[dumpfile] "/home/tobias/Projects/gtkwavefilter/tests/minimal.vcd"
+[dumpfile_mtime] "Mon Sep 23 07:05:51 2024"
+[dumpfile_size] 652
+[savefile] "/home/tobias/Projects/gtkwavefilter/tests/minimal.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-14.751678 40800 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 209
+[signals_width] 303
+[sst_expanded] 1
+[sst_vpaned_height] 154
+@28
+top.valid
+top.ready
+top.last
+@22
+#{top.data[7:0]} top.data[7] top.data[6] top.data[5] top.data[4] top.data[3] top.data[2] top.data[1] top.data[0]
+top.data2[63:0]
+[pattern_trace] 1
+[pattern_trace] 0

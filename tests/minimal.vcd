@@ -1,0 +1,61 @@
+$timescale
+  1 ps
+$end
+$scope module top $end
+$var reg 1 ! last $end
+$var reg 1 " valid $end
+$var reg 1 # ready $end
+$var reg 1 a data[7] $end
+$var reg 1 b data[6] $end
+$var reg 1 c data[5] $end
+$var reg 1 d data[4] $end
+$var reg 1 e data[3] $end
+$var reg 1 f data[2] $end
+$var reg 1 g data[1] $end
+$var reg 1 h data[0] $end
+$var reg 64 x data2 $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+1#
+0a
+0b
+0c
+0d
+0e
+0f
+0g
+0h
+b1101111010101101101111101110111100010010001101000101011001111000 x
+$end
+#10000
+$comment Sample 0 (Start/Trigger) $end
+1"
+1a
+1c
+1e
+1g
+#20000
+0"
+#30000
+1"
+1!
+1b
+1d
+1f
+1h
+#40000
+0"
+#50000
+1"
+0!
+0a
+0c
+0e
+0g
+#60000
+0"
+#80000
