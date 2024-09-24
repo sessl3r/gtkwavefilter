@@ -3,6 +3,7 @@
 import sys
 import vcd
 from wave2data.input import VCDWaveInput
+from wave2data.wave import Sample
 
 
 # Monkey patch _TokenizerState.advance to be able to use streams
@@ -34,22 +35,24 @@ vcd.reader._TokenizerState.advance = __monkey_advance
 def main():
     wave = VCDWaveInput(sys.stdin.fileno())
     while True:
+        samples = []
         for sample in wave:
-            if not isinstance(sample, vcd.reader.Token):
+            if isinstance(sample, vcd.reader.Token):
+                # handle gtkwave's data_end
+                if sample.kind == vcd.reader.TokenKind.COMMENT:
+                    if "data_end" in sample.data:
+                        break
                 continue
-            # handle gtkwave's data_end
-            if sample.kind == vcd.reader.TokenKind.COMMENT:
-                if "data_end" in sample.data:
-                    break
-            print(sample, file=sys.stderr)  # TODO: debugging, remove in real code
+            if not isinstance(sample, Sample):
+                continue
+            samples.append(sample)
 
-        print("$name Val1")
-        print("#0 Val1:Test1?")
-        print("#10000 ?darkblue?Val1:Test2")
-        print("$next")
-        print("$name Val2")
-        print("#0 Val2:Test1?")
-        print("#20000 Val2:Test2")
+        for traceline in ['line1', 'line2', 'line3']:
+            print(f"$name {traceline}")
+            for sample in samples:
+                print(f"#{int(sample.timestamp / wave.timeval)} {sample.timestamp}")
+            print("$next")
+
         print("$finish")
         sys.stdout.flush()
 
